@@ -1,0 +1,48 @@
+@mixin flex-center($justify){
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+}
+
+$border : solid 1px rgb(73, 73, 55);
+
+:root{
+    background-color: black;
+    color: white
+}
+
+.nav{
+    @include flex-center(space-between);
+    margin: 1rem 2rem;
+    border: $border;
+    h1{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-transform: capitalize
+    }
+}
+
+.nav-col-left{
+    @include flex-center(space-around);
+    border: $border;
+    width: 20%
+}
+
+.nav-col-right{
+    width: 80%;
+
+    .off-nav-btns{
+        @include flex-center(flex-end);
+        border: $border;
+        column-gap: 2rem;
+        padding: 2em 0;
+
+        .nav-link{
+            text-transform: capitalize;
+            font-family:sans-serif;
+            cursor: pointer;
+            margin-right: 2em;
+            font-size: 1.5em;
+            text-decoration: none;
+        }
+    }
+}
