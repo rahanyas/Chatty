@@ -25,6 +25,9 @@ $border : solid 1px rgb(73, 73, 55);
         h1{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         text-transform: capitalize;
+        @media screen and (max-width: 768px) {
+            font-size: 1.5em;
+        }
     }
         @media screen and (max-width : 768px) {
             @include flex-center(flex-start, center);
