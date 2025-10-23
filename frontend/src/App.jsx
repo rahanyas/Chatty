@@ -7,10 +7,10 @@ import {
 import { lazy } from 'react';
 
 import Layout from './structure/Layout'
-import Signup from './Pages/SignUp.page';
 import Home from './Pages/Home.page';
 
 const SignUpPage = lazy(() => import('./Pages/SignUp.page'))
+const ErrorPage = lazy(() => import('./Pages/ErrorPage'))
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -18,6 +18,7 @@ const router = createBrowserRouter(
           <Route  element={<Layout/>}>
                 <Route index element={<Home/>}/>
                 <Route path='/signup' element={<SignUpPage/>}/>
+                <Route path='*' element={<ErrorPage/>}/>
           </Route>
         </Route>
     )

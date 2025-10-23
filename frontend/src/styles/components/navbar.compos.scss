@@ -11,16 +11,19 @@ $border : solid 1px rgb(73, 73, 55);
     color: white
 }
 
-.nav{
-    @include flex-center(space-between,center);
-    margin: 1rem 2rem;
-    border: $border;
-
+.nav {
+  @include flex-center(space-between, center);
+  margin: 0; // remove top/bottom margin for sticky
+  padding: 1rem 2rem;
+  position: sticky;   // <-- makes navbar stick to top
+  top: 0;             // stick to top
+  background-color: black; // same as root bg
+  z-index: 1000;      // stay above other content
 }
+
 
 .nav-col-left{
     @include flex-center(space-around,center);
-    border: $border;
     width: 20%;
         h1{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -40,11 +43,10 @@ $border : solid 1px rgb(73, 73, 55);
 
     .off-nav-btns{
         @include flex-center(flex-end,center);
-        border: $border;
 
         @media screen and (min-width : 768px){
             .off-nav-btns{
-                @include flex-center(space-evenly, center)
+                @include flex-center(flex-end, center)
             }
         }
 
@@ -52,8 +54,7 @@ $border : solid 1px rgb(73, 73, 55);
             text-transform: capitalize;
             font-family:sans-serif;
             cursor: pointer;
-            margin-right: 2em;
-            border: $border;
+            margin-right: 1em;
             text-wrap-mode: nowrap;
             font-size: 1.5em;
             text-decoration: none;
