@@ -1,3 +1,7 @@
+# why added vercel.json
+did this because no matter what url the user visits - /, /login,/profile etc. the server will serve index.html(tne
+root page)
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
