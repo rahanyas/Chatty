@@ -24,18 +24,30 @@ $bg : rgb(19, 17, 17);
 
  
 .nav-col-left{
-    @include flex-center(space-around,center);
+    // @include flex-center(space-around,center);
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
     width: 20%;
+    font-size: 18px;
         h1{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         text-transform: capitalize;
-        @media screen and (max-width: 768px) {
-            font-size: 1.5em;
-        }
     }
         @media screen and (max-width : 768px) {
             @include flex-center(flex-start, center);
             flex-direction: column;
+            h1{
+                font-size: 1.5em;
+            }
+            .nav-icon{
+                font-size: 1.5em;
+            }
+        }
+
+        .nav-icon{
+            font-size: 3.5em;
+            color: rgb(237, 242, 246);
         }
 }
 
@@ -46,12 +58,15 @@ $bg : rgb(19, 17, 17);
     .off-nav-btns{
         @include flex-center(flex-end,center);
 
-        @media screen and (min-width : 768px){
+        @media screen and (max-width : 768px){
             .off-nav-btns{
                 @include flex-center(flex-end, center)
             }
             .nav-link{
                 font-size: .5em;
+                margin-right: 0;
+                font-weight: 500;
+                border: 1.5px solid #4e9af1;
             }
         }
         .nav-link {
@@ -61,6 +76,7 @@ $bg : rgb(19, 17, 17);
             font-family: "Segoe UI", sans-serif;
             font-size: 1rem;
             font-weight: 600;
+            text-wrap: nowrap;
             color: #4e9af1;
             border: 2px solid #4e9af1;
             border-radius: 8px;

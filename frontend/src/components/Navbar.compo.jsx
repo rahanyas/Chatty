@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import{FaComments} from 'react-icons/fa';
+import{FaRegCommentDots} from 'react-icons/fa';
 
 const Navbar = ()  => {
     // dummy user tracker
@@ -11,7 +11,7 @@ const Navbar = ()  => {
 
             <div className="nav-col-left">
                <h1 className="nav-head">hey</h1>
-               <FaComments className='nav-icon'/>
+               <FaRegCommentDots  className='nav-icon'/>
             </div>
 
             {/* nav second section , includes login and profile related btns */}
