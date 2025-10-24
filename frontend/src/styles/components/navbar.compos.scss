@@ -4,7 +4,7 @@
     align-items: $align;
 }
 
-$border : solid 1px rgb(73, 73, 55);
+$border : solid 1px rgb(190, 190, 50);
 $bg : rgb(19, 17, 17);
 
 :root{
@@ -72,24 +72,28 @@ $bg : rgb(19, 17, 17);
     font-size: 1em;
 
     .off-nav-btns{
-        @include flex-center(flex-end,center);
+        // @include flex-center(flex-end,center);
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 0;
+        column-gap: 1em;
 
-        @media screen and (max-width : 768px){
+        @media screen and (max-width:768px){
             .off-nav-btns{
-                @include flex-center(flex-end, center)
+                // @include flex-center(flex-end, center);
+                margin-right: 0em;
+                border: $border;
             }
             .nav-link{
                 font-size: .5em;
-                margin-right: 0;
                 font-weight: 500;
                 border: 1.5px solid #4e9af1;
-                 padding: 0.3rem 1rem;
+                padding: 0.3rem 1rem;
             }
         }
         .nav-link {
             display: inline-block;
             padding: 0.6rem 1.5rem;
-            margin-right: 1em;
             font-family: "Segoe UI", sans-serif;
             font-size: 1rem;
             font-weight: 600;
