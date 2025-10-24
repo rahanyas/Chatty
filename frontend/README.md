@@ -2,6 +2,12 @@
 did this because no matter what url the user visits - /, /login,/profile etc. the server will serve index.html(tne
 root page)
 
+# things to make 
+
+add style to nav btn = not done
+
+decrese the size of welcome txt in mobile = not dne
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

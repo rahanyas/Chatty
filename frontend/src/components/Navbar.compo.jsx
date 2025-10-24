@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import{FaComments} from 'react-icons/fa';
 
 const Navbar = ()  => {
     // dummy user tracker
@@ -10,7 +11,7 @@ const Navbar = ()  => {
 
             <div className="nav-col-left">
                <h1 className="nav-head">hey</h1>
-               <img src="#" alt="hey_logo" />
+               <FaComments className='nav-icon'/>
             </div>
 
             {/* nav second section , includes login and profile related btns */}
@@ -32,7 +33,7 @@ const Navbar = ()  => {
                     // section to show when user is authenticated
 
                   <div className="on-nav-btns">
-                    <h1 className="nav-link">profile</h1>
+                    <Link to='/profile' className="nav-link">profile</Link>
                   </div>
                   )}
             </div>

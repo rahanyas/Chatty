@@ -5,9 +5,10 @@
 }
 
 $border : solid 1px rgb(73, 73, 55);
+$bg : rgb(19, 17, 17);
 
 :root{
-    background-color: black;
+    background-color: $bg;
     color: white
 }
 
@@ -21,7 +22,7 @@ $border : solid 1px rgb(73, 73, 55);
   z-index: 1000;      // stay above other content
 }
 
-
+ 
 .nav-col-left{
     @include flex-center(space-around,center);
     width: 20%;
@@ -40,6 +41,7 @@ $border : solid 1px rgb(73, 73, 55);
 
 .nav-col-right{
     width: 80%;
+    font-size: 1em;
 
     .off-nav-btns{
         @include flex-center(flex-end,center);
@@ -48,17 +50,37 @@ $border : solid 1px rgb(73, 73, 55);
             .off-nav-btns{
                 @include flex-center(flex-end, center)
             }
+            .nav-link{
+                font-size: .5em;
+            }
+        }
+        .nav-link {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            margin-right: 1em;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4e9af1;
+            border: 2px solid #4e9af1;
+            border-radius: 8px;
+            text-decoration: none;
+            text-transform: capitalize;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: #4e9af1;
+                color: #fff;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(78, 154, 241, 0.3);
+            }
+
+            &:active {
+                transform: scale(0.97);
+            }
         }
 
-        .nav-link{
-            text-transform: capitalize;
-            font-family:sans-serif;
-            cursor: pointer;
-            margin-right: 1em;
-            text-wrap-mode: nowrap;
-            font-size: 1.5em;
-            text-decoration: none;
-        }
     }
 }
 
