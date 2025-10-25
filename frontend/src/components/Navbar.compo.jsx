@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import{FaRegCommentDots} from 'react-icons/fa';
+import{FaRegCommentDots, FaBars, FaTimes} from 'react-icons/fa';
+//dots-applogo, bars - menuIcon , time - menu close icon
 
 const Navbar = ()  => {
     // dummy user tracker
-    const [isUser, setIsuser] = useState(false)
+    const [isUser, setIsuser] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+    
     return(
         <div className="nav">
             {/* nav first section , includes logo and app name */}
@@ -20,11 +23,22 @@ const Navbar = ()  => {
 
                 {/* section to show if user is not authenitcated login/signup btns*/}
 
+                  {/* // desktop view */}
                   <div className="off-nav-btns">
 
                     <Link to='/login' className="nav-link">login</Link>
                     <Link to='/signup' className="nav-link">sign-up</Link>
 
+                  </div>
+
+                  {/* mobile view */}
+                  <div className="ham-section" onClick={() => setMenuOpen(prev => !prev)}>
+                        {menuOpen ? <FaTimes/> : <FaBars/>}
+                  </div>
+
+                  <div className={menuOpen ? "ham-options" : "no-ham-option"}>
+                    <Link to='/login' className="nav-link">login</Link>
+                    <Link to='/signup' className="nav-link">sign-up</Link>
                   </div>
 
                   {/* now isUser is just dummy */}

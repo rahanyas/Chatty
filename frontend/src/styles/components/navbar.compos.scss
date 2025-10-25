@@ -29,7 +29,8 @@ $bg : rgb(19, 17, 17);
   align-items: center;
   justify-content: flex-start;
   column-gap: 0.8rem;
-  width: 20%;
+  flex: 1;
+  width: fit-content;
   font-size: 18px;
 
   .nav-head {
@@ -52,8 +53,7 @@ $bg : rgb(19, 17, 17);
   }
 
   @media screen and (max-width: 768px) {
-    flex-direction: column;
-    row-gap: 0.3rem;
+     column-gap: 1rem;
     width: 100%;
 
     .nav-head {
@@ -63,7 +63,67 @@ $bg : rgb(19, 17, 17);
     .nav-icon {
       font-size: 1.5em;
     }
+
   }
+}
+
+.ham-section {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 2rem;
+  color: #4e9af1;
+  transition: transform 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    color: white;
+    transform: scale(1.1);
+  }
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+
+.ham-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em 0;
+  row-gap: 1.5rem;
+  background-color: black; // match navbar
+  border-top: $border;
+  position: absolute;
+  top: 100%; // directly below navbar
+  left: 0;
+  width: 100%;
+  z-index: 999; // stays above content
+
+  // smooth transition
+  transition: all 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.no-ham-option {
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
 }
 
 
@@ -77,20 +137,11 @@ $bg : rgb(19, 17, 17);
         justify-content: flex-end;
         margin-right: 0;
         column-gap: 1em;
-
-        @media screen and (max-width:768px){
-            .off-nav-btns{
-                // @include flex-center(flex-end, center);
-                margin-right: 0em;
-                border: $border;
-            }
-            .nav-link{
-                font-size: .5em;
-                font-weight: 500;
-                border: 1.5px solid #4e9af1;
-                padding: 0.3rem 1rem;
-            }
+        
+        @media screen and (max-width:768px) {
+          display: none;
         }
+
         .nav-link {
             display: inline-block;
             padding: 0.6rem 1.5rem;
