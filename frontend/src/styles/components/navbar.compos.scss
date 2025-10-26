@@ -141,34 +141,31 @@ $bg : rgb(19, 17, 17);
         @media screen and (max-width:768px) {
           display: none;
         }
-
-        .nav-link {
-            display: inline-block;
-            padding: 0.6rem 1.5rem;
-            font-family: "Segoe UI", sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            text-wrap: nowrap;
-            color: #4e9af1;
-            border: 2px solid #4e9af1;
-            border-radius: 8px;
-            text-decoration: none;
-            text-transform: capitalize;
-            cursor: pointer;
-            transition: all 0.3s ease;
-
-            &:hover {
-                background-color: #4e9af1;
-                color: #fff;
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(78, 154, 241, 0.3);
-            }
-
-            &:active {
-                transform: scale(0.97);
-            }
-        }
-
     }
 }
+.nav-link {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-wrap: nowrap;
+    color: #4e9af1;
+    border: 2px solid #4e9af1;
+    border-radius: 8px;
+    text-decoration: none;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
+    &:hover {
+        background-color: #4e9af1;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(78, 154, 241, 0.3);
+    }
+
+    &:active {
+        transform: scale(0.97);
+    }
+}
