@@ -14,13 +14,19 @@
 
 .home-container {
   display: flex;
+  margin-top: auto;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height :70vh;;
   background: linear-gradient(135deg, #1c1c26, #7799a0);
   color: #fff;
   text-align: center;
   padding: 2rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-style: italic;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   .home-content {
     max-width: 600px;
@@ -28,7 +34,6 @@
     .home-head {
       font-size: 3rem;
       margin-bottom: 1rem;
-      font-weight: bold;
     }
 
     .home-subhead {
