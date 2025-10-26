@@ -1,9 +1,23 @@
+:root{
+  background-color: black;
+  margin: 0 2rem;
+  @media screen and (max-width:768px) {
+    margin: 0;
+    .home-content{
+      padding: .5em;
+      .home-head{
+        font-size: 2em;
+      }
+    }
+  }
+}
+
 .home-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #6c63ff, #00d4ff);
+  background: linear-gradient(135deg, #1c1c26, #7799a0);
   color: #fff;
   text-align: center;
   padding: 2rem;

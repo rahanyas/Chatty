@@ -37,8 +37,8 @@ const Navbar = ()  => {
                   </div>
 
                   <div className={menuOpen ? "ham-options" : "no-ham-option"}>
-                    <Link to='/login' className="nav-link">login</Link>
-                    <Link to='/signup' className="nav-link">sign-up</Link>
+                    <Link to='/login' className="nav-link" onClick={() => setMenuOpen(false)}>login</Link>
+                    <Link to='/signup' className="nav-link"  onClick={() => setMenuOpen(false)}>sign-up</Link>
                   </div>
 
                   {/* now isUser is just dummy */}

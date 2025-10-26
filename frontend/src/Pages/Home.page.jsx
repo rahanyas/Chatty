@@ -5,7 +5,9 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="home-content">
-        <h1 className="home-head">Welcome to ChatWorld</h1>
+        <h1 className="home-head">
+          Welcome to ChatWorld
+        </h1>
         <p className="home-subhead">
           Connect with friends, family, and colleagues instantly. Chat, call, and share your moments in one place.
         </p>
