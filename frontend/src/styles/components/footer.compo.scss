@@ -1,0 +1,64 @@
+.footer {
+  background-color: #111;
+  color: #ccc;
+  padding: 3rem 1.5rem 1rem;
+  font-family: 'Poppins', sans-serif;
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 2rem;
+  }
+
+  .footer-col {
+    h3 {
+      color: #fff;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.6rem;
+
+        a {
+          color: #ccc;
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: #00bfa6;
+          }
+        }
+      }
+    }
+  }
+
+  .brand {
+    h2 {
+      color: #00bfa6;
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  }
+
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    border-top: 1px solid #222;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    color: #777;
+  }
+}
