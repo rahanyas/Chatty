@@ -14,11 +14,11 @@ const ErrorPage = lazy(() => import('./Pages/ErrorPage'))
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route>
+        <Route errorElement={<ErrorPage/>}>
           <Route  element={<Layout/>}>
                 <Route index element={<Home/>}/>
                 <Route path='/signup' element={<SignUpPage/>}/>
-                <Route path='*' element={<ErrorPage/>}/>
+                {/* <Route path='*' element={<ErrorPage/>}/> */}
           </Route>
         </Route>
     )
