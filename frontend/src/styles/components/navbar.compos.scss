@@ -157,6 +157,11 @@ $bg : rgb(19, 17, 17);
     cursor: pointer;
     transition: all 0.3s ease;
 
+    @media screen and (max-width : 768px){
+        width : 3rem;
+        text-align: center;
+    }
+
     &:hover {
         background-color: #4e9af1;
         color: #fff;

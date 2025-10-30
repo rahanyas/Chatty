@@ -4,17 +4,17 @@ import '../styles/components/footer.compo.scss'
 
 const Footer = () => {
     return (
-<footer class="footer">
-  <div class="footer-container">
+<footer className="footer">
+  <div className="footer-container">
     
     {/* <!-- Column 1: Brand Info --> */}
-    <div class="footer-col brand">
+    <div className="footer-col brand">
       <h2 style={{textTransform : "uppercase"}}>hey</h2>
       <p>Building a smarter web, one line at a time.</p>
     </div>
 
     {/* <!-- Column 2: Quick Links --> */}
-    <div class="footer-col">
+    <div className="footer-col">
       <h3>Quick Links</h3>
       <ul>
         <li><a href="#">Home</a></li>
@@ -25,7 +25,7 @@ const Footer = () => {
     </div>
 
     {/* <!-- Column 3: Resources --> */}
-    <div class="footer-col">
+    <div className="footer-col">
       <h3>Resources</h3>
       <ul>
         <li><a href="#">Privacy Policy</a></li>
@@ -36,8 +36,8 @@ const Footer = () => {
 
   </div>
 
-  <div class="footer-bottom">
-    <p>© 2025 Rahanyas. Made with ❤️ using MERN.</p>
+  <div className="footer-bottom">
+    <p>© 2025 Rahanyas.</p>
   </div>
 </footer>
 
