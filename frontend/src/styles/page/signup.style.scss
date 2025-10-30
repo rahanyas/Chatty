@@ -1,6 +1,54 @@
 .container{
-    background-color: blue;
+    background-color: rgba(65, 68, 67, 0.321);
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: fit-content;
+    padding: 1rem  0;
+    span{
+        text-decoration: underline;
+        margin-bottom: 1em;
+    }
+}
+
+.box1{
+ border: 1px solid yellow;
+ margin: 2rem 0;
+ padding: 2rem;
+ display: flex;
+ flex-direction: column;
+ row-gap: 1rem;
+
+ input{
+    padding: 1em;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+ }
+
+ button{
+    width: fit-content;
+    padding: 1em 2em;
+    background-color: rgba(101, 251, 101, 0.769);
+    border: none;
+    margin: 0 auto;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+ }
+
+}
+
+
+.oauth-btn{
+    width: 80%;
+    text-transform: capitalize;
+    font-size: 19px;
+    font-weight: 600;
+    padding: .7em;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: rgb(58, 99, 58);
 }
