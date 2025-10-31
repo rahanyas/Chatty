@@ -16,15 +16,16 @@ dbConnect(process.env.MONGO_URI);
 
 const app = express();
 
-app.use(cors())
+app.use(cors({
+  origin : ['http://localhost:5173', 'https://192.168.31.174:5173', 'https://chatty-kappa-seven.vercel.app', ],
+   credentials : true
+}));
+
 app.use(express.json());
 app.use(morgan('dev'));
 app.use('/api/auth', authRouter);
 
 
-app.get('/', (req, res) => {
-    res.send('hello guys')
-});
 
 app.listen(port , (err) => {
    if(err) return console.log('error in listen func', err);

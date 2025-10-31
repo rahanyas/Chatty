@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-const uri = import.meta.env.vite_dev_uri
-console.log(import.meta.env.vite_dev_uri, uri)
+const uri = import.meta.env.VITE_ENV === 'dev' ? import.meta.env.VITE_DEV_URI : import.meta.env.VITE_PROD_URI
+
+console.log(uri);
+
+
 const axioInstance = axios.create({
-    baseURL : import.meta.env.vite_dev_uri,
+    baseURL : import.meta.env.vite_dev_uri || uri,
     withCredentials : true
 });
 

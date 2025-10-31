@@ -13,7 +13,7 @@ class Auth_check{
     }
 
     set checkMobile(mobile){
-        if(mobile.toString().length < 10 || mobile.toString().length > 11){
+        if(mobile.length < 10 || mobile.length > 11){
             throw new Error('Mobile number must be 10 digits')
         }
     }

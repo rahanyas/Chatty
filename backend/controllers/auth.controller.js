@@ -8,32 +8,19 @@ export const register = async (req, res) => {
 	try{
 
 	const {name, email, pass, mobile}  = req.body;
-	console.log('mobile nb length', mobile.toString().length);
+	console.log('mobile nb length', mobile.length);
 
 	if(!name || !email || !pass || !mobile){
 	return res.status(400).json({success : false, 
 	msg : 'please enter all required feilds'
 	})
 	}
- 
-	// if(mobile.toString().length <10){
-	// return res.status(400).json({success : false, msg : 'mobile number must be 10 digits'})
-	// }
-    
+  
+
+	// setter methods in authcheck 
 	Auth_instance.checkEmail = email;
 	Auth_instance.checkPass = pass;
 	Auth_instance.checkMobile = mobile
-
-	// if(!email.includes('@') || !email.includes('.com')){
-	// return res.status(400).json({success : false, 
-	// msg : 'please enter a vaild email'})
-	// }
-
-	// if(pass.length < 3){
-	// return res.status(400).json({success  : false, 
-	// msg : 'password must be atlest 3 digits long'
-	// })
-	// };
 
 	const existingUser = await userModal.findOne({email});
 	
