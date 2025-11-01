@@ -5,9 +5,9 @@ const uri = import.meta.env.VITE_ENV === 'dev' ? import.meta.env.VITE_DEV_URI : 
 console.log(uri);
 
 
-const axioInstance = axios.create({
+const server = axios.create({
     baseURL : import.meta.env.vite_dev_uri || uri,
     withCredentials : true
 });
 
-export default axioInstance
+export default server

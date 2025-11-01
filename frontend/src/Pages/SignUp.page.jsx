@@ -1,30 +1,32 @@
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 import '../styles/page/signup.style.scss'
 import { Link } from 'react-router-dom'
-import server from '../utils/axiosInstance.utils.js'
-
+import { useDispatch, useSelector } from 'react-redux'
 const Signup = () => {
 
-    const [user, setIsUser] = useState({
-        name : '',
-        email : '',
-        mobile : '',
-        pass : ''
-    })
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+
+    // const [user, setIsUser] = useState({
+    //     name : '',
+    //     email : '',
+    //     mobile : '',
+    //     pass : ''
+    // })
 
     const [confirmPass, setConfirmPass] = useState('')
 
 
-    async function register(){
-       const res = await server.post('/auth/register', user);
-       console.log(res.data)
-    }
+    // async function register(){
+    //    const res = await server.post('/auth/register', user);
+    //    console.log(res.data)
+    // }
 
-    function setDataToUser(e){
-        const {name, value} = e.target
-        setIsUser((prev) => ({...prev, [name] : value}));
-        console.log('user',user);               
-    };
+    // function setDataToUser(e){
+    //     const {name, value} = e.target
+    //     setIsUser((prev) => ({...prev, [name] : value}));
+    //     console.log('user',user);               
+    // };
 
     return(
         <div className="container">
