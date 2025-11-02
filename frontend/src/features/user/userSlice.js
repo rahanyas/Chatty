@@ -12,12 +12,15 @@ const initialState = {
     msg : ''
 }
 
-export const register = createAsyncThunk('user/login', async() => {
+
+export const register = createAsyncThunk('user/register', async(data) => {
     try {     
-        const res = await server.post('/auth/register', initialState);
+        const res = await server.post('/auth/register', data);
+        console.log(res);
+        
         return res.data;
     } catch (err) {
-        console.log('error in register func : ', err)
+        console.log('error in register func : ', err.response.data)
     }
 })
 
@@ -25,26 +28,34 @@ const userSlice = createSlice({
     name : 'user',
     initialState,
     reducers : {
-        setDataToState : (state, action) => {
-            
+        updateFeild : (state, action) => {
+            const {field, value} = action.payload;
+            // console.log(action.payload);
+            state[field] = value
         }
     },
     extraReducers : (builder) => {
         builder
-            .addCase(login.pending, (state) => {
+            .addCase(register.pending, (state) => {
                 state.status = 'loading'
             })
             .addCase(register.fulfilled, (state, action) => {
-                state.name = action.payload.name;
-                state.email = action.payload.email;
-                state.pass = action.payload.pass;
-                state.mobile = action.payload.mobile
+                console.log(action);
+                
+                state.msg = action.payload.msg,
                 state.isLogedIn = true;
                 state.logedInThroughOauth = false;
-                state.status = 'succeed'
+                state.status = action.payload.success
+            })
+            .addCase(register.rejected, (state, action) =>  {
+                state.msg = action.payload.msg
+                console.log(action);
+                
+                state.status = action.payload.success
             })
     }
 });
 
+export const {updateFeild} = userSlice.actions
 
 export default userSlice.reducer;
