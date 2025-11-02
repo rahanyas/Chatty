@@ -17,7 +17,7 @@ dbConnect(process.env.MONGO_URI);
 const app = express();
 
 app.use(cors({
-  origin : ['http://localhost:5173', 'https://192.168.31.174:5173', 'https://chatty-kappa-seven.vercel.app', ],
+  origin : [process.env.DEV_URI, process.env.PROD_URI ],
    credentials : true
 }));
 

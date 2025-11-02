@@ -13,7 +13,7 @@ const initialState = {
 }
 
 
-export const register = createAsyncThunk('user/register', async(data) => {
+export const register = createAsyncThunk('user/register', async(data, {rejectWithValue}) => {
     try {     
         const res = await server.post('/auth/register', data);
         console.log(res);
@@ -21,6 +21,7 @@ export const register = createAsyncThunk('user/register', async(data) => {
         return res.data;
     } catch (err) {
         console.log('error in register func : ', err.response.data)
+        return rejectWithValue(err.response.data || {msg : 'Sign-in Failed', success : false})
     }
 })
 
@@ -42,16 +43,15 @@ const userSlice = createSlice({
             .addCase(register.fulfilled, (state, action) => {
                 console.log(action);
                 
-                state.msg = action.payload.msg,
+                state.msg = action.payload?.msg,
                 state.isLogedIn = true;
                 state.logedInThroughOauth = false;
-                state.status = action.payload.success
+                state.status = action.payload?.success
             })
             .addCase(register.rejected, (state, action) =>  {
-                state.msg = action.payload.msg
                 console.log(action);
-                
-                state.status = action.payload.success
+                state.msg = action.payload?.msg                
+                state.status = action.payload?.success
             })
     }
 });

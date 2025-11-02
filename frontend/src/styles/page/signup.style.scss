@@ -20,6 +20,20 @@
 
 }
 
+.err-container{
+    border : 1px solid rgb(178, 178, 195);
+    margin-top: 1em;
+    padding : 1em 3em
+}
+
+.err-msg{
+    color: rgb(184, 43, 43);
+    font-size: medium;
+    text-transform: capitalize;
+    font-family: sans-serif;
+    text-wrap: wrap;
+}
+
 .box1{
 //  border: 1px solid yellow;
  margin: 2rem 0;
