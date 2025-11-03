@@ -11,6 +11,7 @@ import LandingPage from './Pages/Landing.page';
 
 const SignUpPage = lazy(() => import('./Pages/SignUp.page'))
 const ErrorPage = lazy(() => import('./Pages/ErrorPage'))
+const HomePage = lazy(() => import('./Pages/HomePage/Home.page'))
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
           <Route  element={<Layout/>}>
                 <Route index element={<LandingPage/>}/>
                 <Route path='/signup' element={<SignUpPage/>}/>
+                <Route path='/home' element={<HomePage/>}/>
                 {/* <Route path='*' element={<ErrorPage/>}/> */}
           </Route>
         </Route>

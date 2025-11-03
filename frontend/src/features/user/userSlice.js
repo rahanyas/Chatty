@@ -32,16 +32,6 @@ const userSlice = createSlice({
         updateFeild : (state, action) => {
             const {field, value} = action.payload;
             state[field] = value
-        },
-        resetField : (state) => {
-            state.name = '',
-            state.email = '',
-            state.mobile = '',
-            state.pass = '',
-            state.isLogedIn = false,
-            state.logedInThroughOauth = false,
-            state.status = 'idle',
-            state.msg = ''
         }
     },
     extraReducers : (builder) => {
@@ -67,6 +57,6 @@ const userSlice = createSlice({
     }
 });
 
-export const {updateFeild, resetField} = userSlice.actions
+export const {updateFeild} = userSlice.actions
 
 export default userSlice.reducer;
