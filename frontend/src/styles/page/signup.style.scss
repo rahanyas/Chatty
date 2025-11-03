@@ -20,30 +20,51 @@
 
 }
 
-.err-container{
-    border : 1px solid rgb(178, 178, 195);
-    margin-top: 1em;
-    padding : 1em 3em
+.err-container {
+  border: 1px solid rgb(178, 178, 195);
+  margin-top: 1em;
+  padding: 1em 3em;
+  border-radius: 8px;
+  background: rgba(255, 0, 0, 0.05);
+  animation: shake 0.4s ease-in-out;
 }
 
-.err-msg{
-    color: rgb(184, 43, 43);
-    font-size: medium;
-    text-transform: capitalize;
-    font-family: sans-serif;
-    text-wrap: wrap;
+.err-msg {
+  color: rgb(184, 43, 43);
+  font-size: medium;
+  text-transform: capitalize;
+  font-family: sans-serif;
 }
+
+.success-msg{
+  color: rgb(21, 196, 18);
+  font-size: medium;
+  text-transform: capitalize;
+  font-family: sans-serif;
+}
+
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
 
 .box1{
 //  border: 1px solid yellow;
  margin: 2rem 0;
  padding: 2rem;
  display: flex;
+ align-items: center;
  flex-direction: column;
  row-gap: 1rem;
 
  input{
     padding: 1.3em;
+    width: 100%;
     outline: none;
     border-radius: 10px;
     border: none;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import '../styles/page/home.style.scss';
+import '../styles/page/landingPage.style.scss';
 
-const Home = () => {
+const LandingPage = () => {
   return (
     <div className="home-container">
       <div className="home-content">
@@ -19,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default LandingPage;

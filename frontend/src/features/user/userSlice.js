@@ -31,31 +31,42 @@ const userSlice = createSlice({
     reducers : {
         updateFeild : (state, action) => {
             const {field, value} = action.payload;
-            // console.log(action.payload);
             state[field] = value
+        },
+        resetField : (state) => {
+            state.name = '',
+            state.email = '',
+            state.mobile = '',
+            state.pass = '',
+            state.isLogedIn = false,
+            state.logedInThroughOauth = false,
+            state.status = 'idle',
+            state.msg = ''
         }
     },
     extraReducers : (builder) => {
         builder
             .addCase(register.pending, (state) => {
+                state.msg = '';
+                state.isLogedIn = false
                 state.status = 'loading'
             })
             .addCase(register.fulfilled, (state, action) => {
                 console.log(action);
                 
                 state.msg = action.payload?.msg,
-                state.isLogedIn = true;
+                state.isLogedIn = action.payload?.success;
                 state.logedInThroughOauth = false;
-                state.status = action.payload?.success
+                state.status = 'success'
             })
             .addCase(register.rejected, (state, action) =>  {
                 console.log(action);
                 state.msg = action.payload?.msg                
-                state.status = action.payload?.success
+                state.status = 'failed'
             })
     }
 });
 
-export const {updateFeild} = userSlice.actions
+export const {updateFeild, resetField} = userSlice.actions
 
 export default userSlice.reducer;
