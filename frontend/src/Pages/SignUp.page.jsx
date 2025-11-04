@@ -75,8 +75,8 @@ const Signup = () => {
         <button type="button" onClick={handleSubmit}>Signup</button>
       </div>
 
-      <span>Already have an account? <Link to='/login' className='login-link'>Login</Link></span>
-      <span>or</span>
+      <span  className='span1'>Already have an account? <Link to='/login' className='login-link'>Login</Link></span>
+      <span className='span2'>or</span>
       <button className='oauth-btn'>Login with Google</button>
     </div>
   )

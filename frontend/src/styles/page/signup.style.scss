@@ -17,6 +17,33 @@
             color: blue;
         }
     }
+      // medium device  style
+    @media screen and (min-width : 768px){
+      flex-direction: row-reverse;
+      border: 1px solid blue;
+      gap: 2em;
+      justify-content: center;
+      position: relative;
+      // align-items: center;
+
+      span{
+        position: absolute;
+        bottom: 12em;
+        left: 10em;
+
+        //large device styles
+        @media screen and (min-width : 1025px){      
+          // span centerd in large device
+          left:30em;
+          bottom: 8em;
+          font-family: sans-serif;
+          font-size: 20px;
+        }
+      }
+      .span2{
+        visibility: hidden;
+      }
+    }
 
 }
 
@@ -53,6 +80,7 @@
 }
 
 
+
 .box1{
 //  border: 1px solid yellow;
  margin: 2rem 0;
@@ -62,6 +90,10 @@
  flex-direction: column;
  row-gap: 1rem;
 
+      // desktop style
+      @media screen and (min-width :768px){
+        border: 1px solid burlywood;
+      }
  input{
     padding: 1.3em;
     width: 100%;
@@ -96,4 +128,7 @@
     color: white;
     background-color: rgb(58, 99, 58);
     cursor: pointer;
+    @media screen and (min-width : 768px){
+      width: 50%;
+    }
 }
