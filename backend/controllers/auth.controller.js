@@ -41,6 +41,7 @@ export const register = async (req, res) => {
 	
 	await newUser.save();
 
+
 	return res.status(200).json({success : true, msg : 'User Registered Successfully'})
 	} catch (err){
 	 console.log('error in register function', err);
@@ -64,9 +65,10 @@ export const Login = async (req, res) => {
 		
 		const checkPass = await bcrypt.compare(pass, user.pass);
 
-		if(!checkPass) return res.status(400).json({success : false, msg : 'Wrong Password'});
-
-		return res.status(200).json({success : true, msg : 'Successfully Loged In'});
+		if(!checkPass) return res.status(400).json({success : false, msg : 'Invalid Credentials'});
+		
+		const logedUser = await userModal.findOne({email}).select('-pass');
+		return res.status(200).json({success : true, msg : 'Successfully Loged In', data:logedUser});
 	
 	}catch(err) {
 	console.log('error in login function', err);

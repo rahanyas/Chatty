@@ -52,6 +52,8 @@ const Signup = () => {
 
   return (
     <div className="container">
+
+      <div className="box1">
       {(errorMsg.length > 0 || user.msg.length > 0) && (
         <div className='err-container'>
           <h1 className={user.status === 'success' ? 'success-msg' : 'err-msg'}>
@@ -59,8 +61,6 @@ const Signup = () => {
           </h1>
         </div>
       )}
-
-      <div className="box1">
         <input type="text" name="name" value={user.name} placeholder="Username" onChange={handleChange} required />
         <input type="email" name="email" value={user.email} placeholder="Email" onChange={handleChange} required />
         <input type="number" name="mobile" value={user.mobile} placeholder="Mobile" onChange={handleChange} required />

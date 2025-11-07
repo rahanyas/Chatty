@@ -23,6 +23,18 @@ export const register = createAsyncThunk('user/register', async(data, {rejectWit
         console.log('error in register func : ', err.response.data)
         return rejectWithValue(err.response.data || {msg : 'Sign-in Failed', success : false})
     }
+});
+
+export const login = createAsyncThunk('user/login', async (data, {rejectWithValue}) => {
+    try {
+        // console.log('data from login : ', data)
+        const res = await server.post('/auth/login', data);
+        console.log('res from login req : , ',res.data)
+        return res.data
+    } catch (err) {
+        console.log('error in login func', err.response.data);
+        return rejectWithValue(err.response.data || {msg : 'Login Failed', success : false})
+    }
 })
 
 const userSlice = createSlice({
@@ -51,9 +63,31 @@ const userSlice = createSlice({
             })
             .addCase(register.rejected, (state, action) =>  {
                 console.log(action);
-                state.msg = action.payload?.msg                
+                state.msg = action.payload?.msg 
+                state.isLogedIn = action.payload?.success               
                 state.status = 'failed'
-            })
+            }),
+        builder
+              .addCase(login.pending, state => {
+                state.msg = '';
+                state.isLogedIn = false;
+                state.status  = 'Loading'
+              })
+              .addCase(login.fulfilled, (state, action) => {
+                console.log(action);
+                state.msg = action.payload?.msg;
+                state.isLogedIn = action.payload?.success;
+                state.logedInThroughOauth  = false;
+                state.status  = 'success',
+                state.name = action.payload?.data?.name
+                state.email = action.payload?.data?.email;
+                state.mobile = action.payload?.data?.mobile
+              })
+              .addCase(login.rejected, (state, action) => {
+                state.msg = action.payload?.msg;
+                state.isLogedIn = action.payload?.success;
+                state.status = 'Failed'
+              })
     }
 });
 

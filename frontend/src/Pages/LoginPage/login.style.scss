@@ -1,7 +1,7 @@
 .login-container{
     background-color: rgba(65, 68, 67, 0.321);
 }
-input{
+.login-inp{
     font-size: 1.2rem;
     padding: 1rem;
     margin-bottom: 2rem;
@@ -28,6 +28,7 @@ input{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1.4em;
 }
 
 p{
@@ -51,7 +52,6 @@ p{
     }
     .oauth-box::before{
         content: 'or';
-        margin-bottom: 1em;
     }
     
     .oauth-Btn{
