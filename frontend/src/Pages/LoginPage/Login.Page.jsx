@@ -4,7 +4,7 @@ import './login.style.scss'
 
 const LoginPage = () => {
     return (
-        <div id='container'>
+        <div className='login-container'>
                 <div className="login-box">
                     <input type="email" name='email' placeholder='email' />
                     <input type="password" name="password" placeholder='password'/>
