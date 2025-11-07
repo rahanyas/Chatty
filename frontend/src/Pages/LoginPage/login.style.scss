@@ -1,3 +1,70 @@
 #container{
-    color: yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(65, 68, 67, 0.321);
+
+    @media screen and (min-width:1025px){
+        flex-direction: row-reverse;
+        justify-content: space-evenly;
+        gap: 2rem;
+        height: 60vh;
+    }
+}
+
+.login-box{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    input{
+        font-size: 1.2rem;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        max-width: 100%;
+    }
+
+    .login-btn{
+        width: fit-content;
+        padding: 1em 4em;
+        border-radius: 5px;
+        border: none;
+        font-size: 1.1em;
+        align-self: center;
+        font-family: sans-serif;
+        font-weight: 600;
+        background-color: rgb(95, 204, 95);
+        text-transform: uppercase;
+    }
+}
+
+.oauth-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button{
+    cursor: pointer;
+}
+.oauth-Btn{
+    padding: 1.2em;
+    text-transform: capitalize;
+    font-family: sans-serif;
+    font-weight: 600;
+    text-align: center;
+    text-wrap: wrap;
+    font-size: 1.1em;
+    width: 30em;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(66, 164, 66);
+}
+
+p{
+    text-transform: capitalize;
+    font-family: sans-serif;
 }
