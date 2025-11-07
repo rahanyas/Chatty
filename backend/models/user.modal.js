@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
 },
    email : {
 	type : String,
-	required : true
+	required : true,
+	unique : true
 },
    mobile : {
 	type : String, //  used to string instead of num because of entrering zeros

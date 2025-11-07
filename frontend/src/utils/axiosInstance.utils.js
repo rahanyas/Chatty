@@ -7,7 +7,7 @@ console.log(uri);
 
 const server = axios.create({
     baseURL : import.meta.env.vite_dev_uri || uri,
-    withCredentials : true
+    withCredentials : true,
 });
 
 export default server

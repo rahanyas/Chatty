@@ -25,20 +25,15 @@ const Signup = () => {
   const handleSubmit = () => {
     const { name, mobile, pass, email } = user
 
-    if(confirmPass.length < 0){
-        setErrorMsg('please re-enter password to confirm');
-        return
+    
+    if (!name || !email || !pass || !mobile || !confirmPass) {
+      setErrorMsg('Enter all valid fields')
+      return
     }
     
     if (confirmPass !== pass) {
       setErrorMsg('Passwords do not match')
       setConfirmPass('')
-      return
-    }
-
-
-    if (!name || !email || !pass || !mobile) {
-      setErrorMsg('Enter all valid fields')
       return
     }
 
