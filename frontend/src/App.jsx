@@ -3,11 +3,16 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider
-} from 'react-router-dom'
+} from 'react-router-dom';
 import { lazy } from 'react';
 
 import Layout from './structure/Layout'
 import LandingPage from './Pages/Landing.page';
+
+import { ProtectedRoutes } from './security/ProtectedRoutes';
+import { checkAuth } from './features/user/userSlice.js';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 const SignUpPage = lazy(() => import('./Pages/SignUp.page'))
 const ErrorPage = lazy(() => import('./Pages/ErrorPage'))
@@ -20,7 +25,13 @@ const router = createBrowserRouter(
           <Route  element={<Layout/>}>
                 <Route index element={<LandingPage/>}/>
                 <Route path='/signup' element={<SignUpPage/>}/>
-                <Route path='/home' element={<HomePage/>}/>
+
+                {/* if not user is loged in go to login page  */}
+                <Route path='/home' element={
+                    <ProtectedRoutes>
+                      <HomePage/>
+                    </ProtectedRoutes>
+                  }/>
                 <Route path='/login' element={<LoginPage/>}/>
                 {/* <Route path='*' element={<ErrorPage/>}/> */}
           </Route>
@@ -29,6 +40,12 @@ const router = createBrowserRouter(
 )
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuth())
+  },[]);
+
   return (
       <RouterProvider router={router}/>
   )

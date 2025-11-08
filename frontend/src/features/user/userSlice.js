@@ -35,6 +35,17 @@ export const login = createAsyncThunk('user/login', async (data, {rejectWithValu
         console.log('error in login func', err.response.data);
         return rejectWithValue(err.response.data || {msg : 'Login Failed', success : false})
     }
+});
+
+export const checkAuth = createAsyncThunk('user/checkAuth', async (_,{rejectWithValue}) => {
+    try {
+        const res = await server.get('/auth/checkAuth');
+        console.log('res from checkAuth : ', res.data);
+        return res.data
+    } catch (err) {
+        console.log('Error in checkAuth  : ', err.response.data);
+        return rejectWithValue(err.response.data || {msg : 'checkAuth Failed', success : false})
+    }
 })
 
 const userSlice = createSlice({
@@ -87,6 +98,27 @@ const userSlice = createSlice({
                 state.msg = action.payload?.msg;
                 state.isLogedIn = action.payload?.success;
                 state.status = 'Failed'
+              }),
+        builder
+              .addCase(checkAuth.pending, state => {
+                state.msg = '';
+                state.isLogedIn = false;
+                state.status = 'Loadin';
+              })
+              .addCase(checkAuth.fulfilled, (state, action) => {
+                console.log(action);
+                state.msg = action.payload?.msg;
+                state.isLogedIn = action.payload?.success;
+                state.logedInThroughOauth  = false;
+                state.status  = 'success',
+                state.name = action.payload?.data?.name
+                state.email = action.payload?.data?.email;
+                state.mobile = action.payload?.data?.mobile
+              })
+              .addCase(checkAuth.rejected, (state, action) => {
+                state.msg = '';
+                state.isLogedIn = false;
+                state.status = 'Loadin';
               })
     }
 });

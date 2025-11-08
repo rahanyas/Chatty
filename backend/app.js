@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 import dbConnect from './config/db.config.js';
 dotenv.config();
 import authRouter from './router/auth.router.js';
@@ -20,7 +21,7 @@ app.use(cors({
   origin : [process.env.DEV_URI, process.env.PROD_URI ],
    credentials : true
 }));
-
+app.use((cookieParser()))
 app.use(express.json());
 app.use(morgan('dev'));
 app.use('/api/auth', authRouter);
