@@ -46,6 +46,17 @@ export const checkAuth = createAsyncThunk('user/checkAuth', async (_,{rejectWith
         console.log('Error in checkAuth  : ', err.response.data);
         return rejectWithValue(err.response.data || {msg : 'checkAuth Failed', success : false})
     }
+});
+
+export const logout = createAsyncThunk('user/logout', async (_, {rejectWithValue}) => {
+    try {
+        const res = await server.post('/auth/logout');
+        console.log('res from logout : ', res.data);
+        return res.data
+    } catch (err) {
+        console.log('Error in logout Thunk', err);
+        return rejectWithValue(err.response.msg || {msg : 'Logout Failed', success : false})
+    }
 })
 
 const userSlice = createSlice({
@@ -119,6 +130,24 @@ const userSlice = createSlice({
                 state.msg = '';
                 state.isLogedIn = false;
                 state.status = 'Loadin';
+              }),
+        builder
+              .addCase(logout.pending, (state) => {
+                 state.status = 'pending',
+                 state.success = false,
+                 state.isLogedIn = false
+              })
+              .addCase(logout.fulfilled, (state, action) => {
+                state.email = '';
+                state.pass  = '';
+                state.mobile = '';
+                state.isLogedIn = false;
+                state.status = 'success';
+                state.msg = action.payload.msg
+              })
+              .addCase(logout.rejected, (state, action) => {
+                state.status = 'failed',
+                state.msg = action.payload?.msg
               })
     }
 });

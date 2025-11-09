@@ -17,12 +17,23 @@ const LoginPage = () => {
         pass : ''
     }))
 
-    useEffect(() => {
-        if(user.isLogedIn === true){
-            navigate('/home')
-        }
-    }, [user.isLogedIn, navigate])
+    // useEffect(() => {
+    //     if(user.isLogedIn === true){
+    //         navigate('/home')
+    //     }
+    // }, [user.isLogedIn, navigate])
 
+        useEffect(() => {
+        if(user.isLogedIn === true){
+            const timer = setTimeout(() => {   
+                navigate('/home')
+            }, 3000);
+            // React expects a function to run when the component unmounts or dependencies change
+            return () => clearTimeout(timer)
+        }
+    }, [user.isLogedIn, navigate]);
+
+    
     const userLogin = () => {
         const {email, pass} = data
         if(!email || !pass){

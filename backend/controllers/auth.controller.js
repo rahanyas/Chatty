@@ -102,10 +102,25 @@ export const checkAuth = async (req, res) => {
 			return res.status(400).json({success : false, msg : 'user not found'});
 		};
 
-		return res.status(200).json({success : true, msg : 'user is authorized'})
+		return res.status(200).json({success : true, msg : 'user is authorized', data: user || null})
 
 	} catch (err) {
 		console.log('Error in checkAuth : ', err);
 		return res.status(500).json({sucess : false, msg : 'Internal sever Error'})
+	}
+}
+
+
+export const logout = async (req, res) => {
+	try {
+		var token = req?.cookies?.token;
+		if(!token) {
+			return res.status(400).json({success : false, msg : 'user is not authorized'})
+		}
+		res.clearCookie('token');
+		return res.status(200).json({success : true, msg : 'Logged out successfully'})
+	} catch (err) {
+		console.log('Error in logout function', err);
+		return res.status(200).json({success : false, msg : 'Internal Server Error'})
 	}
 }

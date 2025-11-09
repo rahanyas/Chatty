@@ -18,6 +18,7 @@ const SignUpPage = lazy(() => import('./Pages/SignUp.page'))
 const ErrorPage = lazy(() => import('./Pages/ErrorPage'))
 const HomePage = lazy(() => import('./Pages/HomePage/Home.page'));
 const LoginPage = lazy(() => import('./Pages/LoginPage/Login.Page'));
+const SettingsPage = lazy(() => import('./Pages/SettingsPage/Settings.page.jsx'));
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -27,13 +28,12 @@ const router = createBrowserRouter(
                 <Route path='/signup' element={<SignUpPage/>}/>
 
                 {/* if not user is loged in go to login page  */}
-                <Route path='/home' element={
-                    <ProtectedRoutes>
-                      <HomePage/>
-                    </ProtectedRoutes>
-                  }/>
+                <Route  element={<ProtectedRoutes/>}>
+                    <Route path='/home' element={<HomePage/>}/>
+                    <Route path='/settings' element={<SettingsPage/>}/>
+                </Route>
+
                 <Route path='/login' element={<LoginPage/>}/>
-                {/* <Route path='*' element={<ErrorPage/>}/> */}
           </Route>
         </Route>
     )
