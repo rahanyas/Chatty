@@ -18,7 +18,7 @@ import { oAuth } from './controllers/oauth.controller.js';
 const clientID = process.env.OAUTH_CLIENT_ID;
 const clientSecret = process.env.OAUTH_CLIENT_SECRET;
 
-const callbackURL = process.env.DEV === 'development' ? process.env.DEV_URI + '/auth/google/callback' : process.env.PROD_URI + '/auth/google/callback'
+
 
 if(!port || port === undefined){ 
  console.log('port is undefined')
@@ -43,7 +43,7 @@ app.use(morgan('dev'));
 passport.use(new GoogleStrategy({
   clientID,
   clientSecret,
-  callbackURL : callbackURL
+  callbackURL : 'https://hey-stgl.onrender.com/auth/google/callback'
 }, oAuth));
 
 app.use('/api/auth', authRouter);

@@ -6,7 +6,6 @@ import {
     register
 } from "../controllers/auth.controller.js"
 
-import { verifyToken } from '../helpers/authMiddleware.helper.js';
 
 const router = express.Router();
 
