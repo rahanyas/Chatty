@@ -12,9 +12,9 @@ const Signup = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
 
-  useEffect(() => {
-    if (user.isLogedIn) navigate('/home')
-  }, [user.isLogedIn, navigate])
+  // useEffect(() => {
+  //   if (user.isLogedIn) navigate('/home')
+  // }, [user.isLogedIn, navigate])
 
   const handleChange = (e) => {
     setErrorMsg('')
