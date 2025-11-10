@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema({
 },
    mobile : {
 	type : String, //  used to string instead of num because of entrering zeros
-	required : true,
 	min :  [10, "mobile number must be atleast 10 digits"],
 	max : [10, "mobile number cannot exceed more than 10 digits"],
 	match : [/^[0-9]+$/, "mobile number must contain only digits"]
@@ -27,6 +26,7 @@ const userSchema = new mongoose.Schema({
   googleId: {
 	type : String,
 	unique : true,
+	sparse : true
 },
   provider : {
 	type : String,
