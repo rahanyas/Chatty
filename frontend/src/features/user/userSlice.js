@@ -3,7 +3,6 @@ import server from '../../utils/axiosInstance.utils.js'
 
 
 
-console.log(oauthUrl)
 
 const initialState = {
     name : '',
@@ -68,7 +67,7 @@ export const oauthLogin = createAsyncThunk('user/oauth', async (_, {rejectWithVa
         console.log('oauth btn clicked')
         window.location.href = 'https://hey-stgl.onrender.com/auth/google'
     } catch (err) {
-        console.log('Error in oauthLogin : ', oauthLogin);
+        console.log('Error in oauthLogin : ', err);
         return rejectWithValue(err.response.msg || {msg : 'google login faild', success : false})
     }
 });
