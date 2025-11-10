@@ -132,8 +132,7 @@ const userSlice = createSlice({
               .addCase(checkAuth.fulfilled, (state, action) => {
                 console.log(action);
                 state.msg = action.payload?.msg;
-                state.isLogedIn = action.payload?.success;
-                state.logedInThroughOauth  = false;
+                state.isLogedIn = action.payload?.success?.provider;
                 state.status  = 'success',
                 state.name = action.payload?.data?.name
                 state.email = action.payload?.data?.email;
