@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import server from '../../utils/axiosInstance.utils.js'
 
-const oauthUrl = import.meta.env.VITE_OAUTH_PROD_URI;
+
 
 console.log(oauthUrl)
 
@@ -66,7 +66,7 @@ export const logout = createAsyncThunk('user/logout', async (_, {rejectWithValue
 export const oauthLogin = createAsyncThunk('user/oauth', async (_, {rejectWithValue}) => {
     try {
         console.log('oauth btn clicked')
-        window.location.href = oauthUrl
+        window.location.href = 'https://hey-stgl.onrender.com/auth/google'
     } catch (err) {
         console.log('Error in oauthLogin : ', oauthLogin);
         return rejectWithValue(err.response.msg || {msg : 'google login faild', success : false})
