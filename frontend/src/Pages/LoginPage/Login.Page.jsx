@@ -1,9 +1,9 @@
 import {Link, useNavigate} from 'react-router-dom'
 import { login } from '../../features/user/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 import './login.style.scss'
-import { useEffect, useState } from 'react';
 
 const LoginPage = () => {
     const dispatch = useDispatch();
@@ -17,21 +17,21 @@ const LoginPage = () => {
         pass : ''
     }))
 
-    // useEffect(() => {
-    //     if(user.isLogedIn === true){
-    //         navigate('/home')
-    //     }
-    // }, [user.isLogedIn, navigate])
-
-        useEffect(() => {
+    useEffect(() => {
         if(user.isLogedIn === true){
-            const timer = setTimeout(() => {   
-                navigate('/home')
-            }, 3000);
-            // React expects a function to run when the component unmounts or dependencies change
-            return () => clearTimeout(timer)
+            navigate('/home')
         }
-    }, [user.isLogedIn, navigate]);
+    }, [user.isLogedIn, navigate])
+
+    //     useEffect(() => {
+    //     if(user.isLogedIn === true){
+    //         const timer = setTimeout(() => {   
+    //             navigate('/home')
+    //         }, 3000);
+    //         // React expects a function to run when the component unmounts or dependencies change
+    //         return () => clearTimeout(timer)
+    //     }
+    // }, [user.isLogedIn, navigate]);
 
     
     const userLogin = () => {

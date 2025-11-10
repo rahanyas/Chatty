@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { register, updateFeild } from '../features/user/userSlice.js' 
+import { register, updateFeild, oauthLogin } from '../features/user/userSlice.js' 
 import { useState, useEffect } from 'react'
 import '../styles/page/signup.style.scss'
 
@@ -25,7 +25,6 @@ const Signup = () => {
   const handleSubmit = () => {
     const { name, mobile, pass, email } = user
 
-    
     if (!name || !email || !pass || !mobile || !confirmPass) {
       setErrorMsg('Enter all valid fields')
       return
@@ -72,7 +71,7 @@ const Signup = () => {
 
       <span  className='span1'>Already have an account? <Link to='/login' className='login-link'>Login</Link></span>
       <span className='span2'>or</span>
-      <button className='oauth-btn'>Login with Google</button>
+      <button className='oauth-btn' onClick={() => dispatch(oauthLogin())}>Login with Google</button>
     </div>
   )
 }

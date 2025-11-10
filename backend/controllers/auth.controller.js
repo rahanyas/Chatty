@@ -38,7 +38,9 @@ export const register = async (req, res) => {
 	  name, 
 	  email,
 	  pass : hashedPass,
-	  mobile
+	  mobile,
+	  provider : 'local',
+	  
 	})
 
 	

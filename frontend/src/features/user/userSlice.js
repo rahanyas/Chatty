@@ -1,6 +1,10 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import server from '../../utils/axiosInstance.utils.js'
 
+const oauthUrl = import.meta.env.VITE_OAUTH_PROD_URI;
+
+console.log(oauthUrl)
+
 const initialState = {
     name : '',
     email : '',
@@ -58,6 +62,16 @@ export const logout = createAsyncThunk('user/logout', async (_, {rejectWithValue
         return rejectWithValue(err.response.msg || {msg : 'Logout Failed', success : false})
     }
 })
+
+export const oauthLogin = createAsyncThunk('user/oauth', async (_, {rejectWithValue}) => {
+    try {
+        console.log('oauth btn clicked')
+        window.location.href = oauthUrl
+    } catch (err) {
+        console.log('Error in oauthLogin : ', oauthLogin);
+        return rejectWithValue(err.response.msg || {msg : 'google login faild', success : false})
+    }
+});
 
 const userSlice = createSlice({
     name : 'user',
@@ -148,6 +162,16 @@ const userSlice = createSlice({
               .addCase(logout.rejected, (state, action) => {
                 state.status = 'failed',
                 state.msg = action.payload?.msg
+              });
+        builder
+              .addCase(oauthLogin.pending, (state, action) => {
+                console.log(action)
+              })
+              .addCase(oauthLogin.fulfilled, (state, action) => {
+                console.log('action from fullfiled  : ',action)
+              })
+              .addCase(oauthLogin.rejected, (state, action) => {
+                console.log('action from rejected :', action)
               })
     }
 });

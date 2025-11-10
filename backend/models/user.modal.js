@@ -19,9 +19,25 @@ const userSchema = new mongoose.Schema({
 },
   pass : {
 	type : String,
-	required : true,
 	select : false
 },
+  profilePic : {
+	type : String
+},
+  googleId: {
+	type : String,
+	unique : true,
+},
+  provider : {
+	type : String,
+	required : true,
+	enum : ['local', 'google'],
+	default : 'local'
+},
+  active : {
+	type : String,
+	default : true
+  }
 }, {timestamps : true})
 
 const userModal =  mongoose.model('user', userSchema);
