@@ -40,7 +40,7 @@ export const login = createAsyncThunk('user/login', async (data, {rejectWithValu
 
 export const checkAuth = createAsyncThunk('user/checkAuth', async (_,{rejectWithValue}) => {
     try {
-        const res = await server.get('/auth/checkAuth');
+        const res = await server.get('/auth/checkAuth', {withCredentials : true});
         console.log('res from checkAuth : ', res.data);
         return res.data
     } catch (err) {

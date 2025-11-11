@@ -30,7 +30,7 @@ const app = express();
 
 app.use(cors({
   origin : [process.env.DEV_URI, process.env.PROD_URI],
-   credentials : true
+  credentials : true
 }));
 
 app.use((cookieParser()))
