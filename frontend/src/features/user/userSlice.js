@@ -2,8 +2,6 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import server from '../../utils/axiosInstance.utils.js'
 
 
-
-
 const initialState = {
     name : '',
     email : '',
@@ -132,7 +130,7 @@ const userSlice = createSlice({
               .addCase(checkAuth.fulfilled, (state, action) => {
                 console.log(action);
                 state.msg = action.payload?.msg;
-                state.isLogedIn = action.payload?.success?.provider;
+                state.isLogedIn = action.payload?.success;
                 state.status  = 'success',
                 state.name = action.payload?.data?.name
                 state.email = action.payload?.data?.email;
@@ -166,7 +164,8 @@ const userSlice = createSlice({
                 console.log(action)
               })
               .addCase(oauthLogin.fulfilled, (state, action) => {
-                console.log('action from fullfiled  : ',action)
+                console.log('action from fullfiled  : ',action);
+                state.logedInThroughOauth = true;
               })
               .addCase(oauthLogin.rejected, (state, action) => {
                 console.log('action from rejected :', action)

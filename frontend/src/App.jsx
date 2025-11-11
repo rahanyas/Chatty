@@ -11,9 +11,9 @@ import LandingPage from './Pages/Landing.page';
 
 import { ProtectedRoutes } from './security/ProtectedRoutes';
 import { checkAuth } from './features/user/userSlice.js';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { useEffect } from 'react';
 const SignUpPage = lazy(() => import('./Pages/SignUp.page'))
 const ErrorPage = lazy(() => import('./Pages/ErrorPage'))
 const HomePage = lazy(() => import('./Pages/HomePage/Home.page'));
@@ -41,6 +41,7 @@ const router = createBrowserRouter(
 
 const App = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(checkAuth())

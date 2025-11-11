@@ -12,9 +12,9 @@ const Signup = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
 
-  // useEffect(() => {
-  //   if (user.isLogedIn) navigate('/home')
-  // }, [user.isLogedIn, navigate])
+  useEffect(() => {
+    if (user.isLogedIn === true || user.logedInThroughOauth === true) navigate('/home')
+  }, [user.isLogedIn, user.logedInThroughOauth, navigate])
 
   const handleChange = (e) => {
     setErrorMsg('')
@@ -24,7 +24,6 @@ const Signup = () => {
 
   const handleSubmit = () => {
     const { name, mobile, pass, email } = user
-
     if (!name || !email || !pass || !mobile || !confirmPass) {
       setErrorMsg('Enter all valid fields')
       return

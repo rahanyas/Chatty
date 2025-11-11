@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="nav-col-right">
         {/* Desktop buttons */}
         <div className="off-nav-btns">
-          {isLogedIn ? (
+          {isLogedIn === true ? (
             <>
               <Link to="/profile" className="nav-link">Profile</Link>
               <Link to="/settings" className="nav-link">Settings</Link>
@@ -39,7 +39,7 @@ const Navbar = () => {
 
         {/* Mobile dropdown menu */}
         <div className={menuOpen ? "ham-options" : "no-ham-option"}>
-          {isLogedIn ? (
+          {isLogedIn === true ? (
             <>
               <Link to="/profile" className="nav-link" onClick={() => setMenuOpen(false)}>Profile</Link>
               <Link to="/settings" className="nav-link" onClick={() => setMenuOpen(false)}>Settings</Link>

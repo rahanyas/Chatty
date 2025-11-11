@@ -18,10 +18,10 @@ const LoginPage = () => {
     }))
 
     useEffect(() => {
-        if(user.isLogedIn === true){
+        if(user.isLogedIn === true || user.logedInThroughOauth === true){
             navigate('/home')
         }
-    }, [user.isLogedIn, navigate])
+    }, [user.isLogedIn, user.logedInThroughOauth,navigate])
 
     //     useEffect(() => {
     //     if(user.isLogedIn === true){

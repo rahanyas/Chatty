@@ -4,9 +4,11 @@ root page)
 
 # things to make 
 
-add style to nav btn = not done
+add style to nav btn = done
 
-decrese the size of welcome txt in mobile = not dne
+decrese the size of welcome txt in mobile =done
+
+navbar not changig to islogged in true state when user is loging through google = not solved
 
 # React + Vite
 
