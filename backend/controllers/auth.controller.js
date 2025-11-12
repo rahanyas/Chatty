@@ -42,7 +42,6 @@ export const register = async (req, res) => {
 	  provider : 'local',
 	  
 	})
-
 	
 	await newUser.save();
 

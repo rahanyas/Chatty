@@ -17,7 +17,7 @@ const initialState = {
 export const register = createAsyncThunk('user/register', async(data, {rejectWithValue}) => {
     try {     
         const res = await server.post('/auth/register', data);
-        console.log(res);
+        console.log('res from register : ', res);
         
         return res.data;
     } catch (err) {
@@ -87,15 +87,16 @@ const userSlice = createSlice({
                 state.status = 'loading'
             })
             .addCase(register.fulfilled, (state, action) => {
-                console.log(action);
-                
+                console.log('register fullfiled res : ', action);               
                 state.msg = action.payload?.msg,
+                state.email = action.payload?.data?.email,
+                state.name = action.payload?.data?.name,
                 state.isLogedIn = action.payload?.success;
                 state.logedInThroughOauth = false;
                 state.status = 'success'
             })
             .addCase(register.rejected, (state, action) =>  {
-                console.log(action);
+                console.log('register rejected res : ',action);
                 state.msg = action.payload?.msg 
                 state.isLogedIn = action.payload?.success               
                 state.status = 'failed'
@@ -107,7 +108,7 @@ const userSlice = createSlice({
                 state.status  = 'Loading'
               })
               .addCase(login.fulfilled, (state, action) => {
-                console.log(action);
+                console.log('login fullfiled res : ',action);
                 state.msg = action.payload?.msg;
                 state.isLogedIn = action.payload?.success;
                 state.logedInThroughOauth  = false;
@@ -125,10 +126,10 @@ const userSlice = createSlice({
               .addCase(checkAuth.pending, state => {
                 state.msg = '';
                 state.isLogedIn = false;
-                state.status = 'Loadin';
+                state.status = 'Loading';
               })
               .addCase(checkAuth.fulfilled, (state, action) => {
-                console.log(action);
+                console.log('res checkauth fullfiled : ',action);
                 state.msg = action.payload?.msg;
                 state.isLogedIn = action.payload?.success;
                 state.status  = 'success',
@@ -139,7 +140,7 @@ const userSlice = createSlice({
               .addCase(checkAuth.rejected, (state, action) => {
                 state.msg = '';
                 state.isLogedIn = false;
-                state.status = 'Loadin';
+                state.status = 'Failed';
               }),
         builder
               .addCase(logout.pending, (state) => {
@@ -162,6 +163,7 @@ const userSlice = createSlice({
         builder
               .addCase(oauthLogin.pending, (state, action) => {
                 console.log(action)
+                state.status = 'Loading'
               })
               .addCase(oauthLogin.fulfilled, (state, action) => {
                 console.log('action from fullfiled  : ',action);

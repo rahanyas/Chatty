@@ -4,16 +4,17 @@ import {
   Route,
   RouterProvider
 } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 
 import Layout from './structure/Layout'
 import LandingPage from './Pages/Landing.page';
+import LoadingPage from './Pages/LoadingPage/LoadingPage.jsx';
+
 
 import { ProtectedRoutes } from './security/ProtectedRoutes';
 import { checkAuth } from './features/user/userSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useEffect } from 'react';
 const SignUpPage = lazy(() => import('./Pages/SignUp.page'))
 const ErrorPage = lazy(() => import('./Pages/ErrorPage'))
 const HomePage = lazy(() => import('./Pages/HomePage/Home.page'));
@@ -45,11 +46,16 @@ const App = () => {
 
   useEffect(() => {
     dispatch(checkAuth())
-  },[]);
+  },[dispatch]);
+
+  if(user.status === 'Loading') return <LoadingPage />
 
   return (
+    <Suspense fallback={<LoadingPage/>}>
       <RouterProvider router={router}/>
+    </Suspense>
   )
 };
+
 
 export default App;
