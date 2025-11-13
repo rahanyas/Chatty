@@ -153,8 +153,10 @@ const userSlice = createSlice({
                 state.pass  = '';
                 state.mobile = '';
                 state.isLogedIn = false;
+                state.success = action.payload?.success
+                state.logedInThroughOauth = false
                 state.status = 'success';
-                state.msg = action.payload.msg
+                state.msg = action.payload?.msg
               })
               .addCase(logout.rejected, (state, action) => {
                 state.status = 'failed',
