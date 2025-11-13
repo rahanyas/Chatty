@@ -163,14 +163,20 @@ const userSlice = createSlice({
         builder
               .addCase(oauthLogin.pending, (state, action) => {
                 console.log(action)
-                state.status = 'Loading'
+                state.status = 'Loading',
+                state.success = false,
+                state.isLogedIn = false
               })
               .addCase(oauthLogin.fulfilled, (state, action) => {
                 console.log('action from fullfiled  : ',action);
                 state.logedInThroughOauth = true;
+                state.isLogedIn = true
               })
               .addCase(oauthLogin.rejected, (state, action) => {
                 console.log('action from rejected :', action)
+                state.isLogedIn = false,
+                state.status = "Failed",
+                state.logedInThroughOauth  = false
               })
     }
 });

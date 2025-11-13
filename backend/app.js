@@ -37,6 +37,12 @@ app.use(cors({
   })
 );
 
+
+// iam using cookie with cross-site req vercel to render
+// when sending cookies acros diff domains, the browser requires these response headers
+
+// this tells the browser:
+//  allow cookies to be sent between these domains
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", "true");
   next()
