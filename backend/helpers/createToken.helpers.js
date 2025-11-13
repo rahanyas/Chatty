@@ -17,8 +17,8 @@ export const createToken = (userId, res) => {
 
     res.cookie('token', token, {
 	httpOnly  : true, // it will block accessing cookie from client without this anybody can access document.cookie()
-	secure : isProduction,
-	sameSite : isProduction ?  'None' : 'Lax',
+	secure : true,
+	sameSite : 'None',
 	maxAge : 2 * 24 * 60  * 60 * 1000,
     });
 

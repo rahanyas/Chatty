@@ -5,9 +5,8 @@ export const ProtectedRoutes = () => {
   const { isLogedIn, logedInThroughOauth } = useSelector((state) => state.user);
 
   // User is logged in either normally or through Google OAuth
-  const isAuthenticated = isLogedIn || logedInThroughOauth;
 
-  if (!isAuthenticated) {
+  if (isLogedIn === false) {
     return <Navigate to="/login" replace />;
   }
 
