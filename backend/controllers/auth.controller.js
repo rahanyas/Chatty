@@ -48,6 +48,7 @@ export const register = async (req, res) => {
 	newUser.pass = undefined
 
 	createToken(newUser._id, res);
+	
 	return res.status(200).json({success : true, msg : 'User Registered Successfully', data : newUser})
 	} catch (err){
 	 console.log('error in register function', err);

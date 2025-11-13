@@ -28,10 +28,12 @@ dbConnect(process.env.MONGO_URI);
 
 const app = express();
 
-app.use(cors({
-  origin : [process.env.DEV_URI, process.env.PROD_URI],
-  credentials : true
-}));
+app.use(
+  cors({
+    origin : [process.env.DEV_URI, process.env.PROD_URI, 'https://hey-lyart.vercel.app'],
+    credentials : true
+  })
+);
 
 app.use((cookieParser()))
 app.use(express.json());
