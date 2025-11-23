@@ -60,15 +60,10 @@ export const logout = createAsyncThunk('user/logout', async (_, {rejectWithValue
     }
 })
 
-export const oauthLogin = createAsyncThunk('user/oauth', async (_, {rejectWithValue}) => {
-    try {
+export const oauthLogin = () => {
         console.log('oauth btn clicked')
-        window.location.href = 'https://hey-stgl.onrender.com/auth/google'
-    } catch (err) {
-        console.log('Error in oauthLogin : ', err);
-        return rejectWithValue(err.response.msg || {msg : 'google login faild', success : false})
-    }
-});
+        window.location.href = 'https://hey-stgl.onrender.com/auth/google'   
+};
 
 const userSlice = createSlice({
     name : 'user',
@@ -145,7 +140,6 @@ const userSlice = createSlice({
         builder
               .addCase(logout.pending, (state) => {
                  state.status = 'pending',
-                 state.success = false,
                  state.isLogedIn = false
               })
               .addCase(logout.fulfilled, (state, action) => {
@@ -153,33 +147,14 @@ const userSlice = createSlice({
                 state.pass  = '';
                 state.mobile = '';
                 state.isLogedIn = false;
-                state.success = action.payload?.success
-                state.logedInThroughOauth = false
+                state.logedInThroughOauth = false;
                 state.status = 'success';
-                state.msg = action.payload?.msg
+                state.msg = action.payload?.msg;
               })
               .addCase(logout.rejected, (state, action) => {
-                state.status = 'failed',
-                state.msg = action.payload?.msg
+                state.status = 'failed';
+                state.msg = action.payload?.msg;
               });
-        builder
-              .addCase(oauthLogin.pending, (state, action) => {
-                console.log(action)
-                state.status = 'Loading',
-                state.success = false,
-                state.isLogedIn = false
-              })
-              .addCase(oauthLogin.fulfilled, (state, action) => {
-                console.log('action from fullfiled  : ',action);
-                state.logedInThroughOauth = true;
-                state.isLogedIn = true
-              })
-              .addCase(oauthLogin.rejected, (state, action) => {
-                console.log('action from rejected :', action)
-                state.isLogedIn = false,
-                state.status = "Failed",
-                state.logedInThroughOauth  = false
-              })
     }
 });
 
