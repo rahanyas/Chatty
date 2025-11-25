@@ -61,7 +61,7 @@ export const logout = createAsyncThunk('user/logout', async (_, {rejectWithValue
 })
 
 export const oauthLogin = () => {
-        console.log('oauth btn clicked')
+        // console.log('oauth btn clicked')
         window.location.href = 'https://hey-stgl.onrender.com/auth/google'   
 };
 

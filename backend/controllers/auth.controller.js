@@ -74,7 +74,7 @@ export const Login = async (req, res) => {
 
 		if(!checkPass) return res.status(400).json({success : false, msg : 'Invalid Credentials'});
 		user.pass = undefined
-		createToken(user._id, res);
+		createToken(user._id, res)
 		return res.status(200).json({success : true, msg : 'Successfully Loged In', data:user});
 	
 	}catch(err) {
@@ -115,7 +115,7 @@ export const checkAuth = async (req, res) => {
 
 export const logout = async (req, res) => {
 	try {
-		var token = req?.cookies?.token;
+		let token = req?.cookies?.token;
 		if(!token) {
 			return res.status(400).json({success : false, msg : 'user is not authorized'})
 		}
