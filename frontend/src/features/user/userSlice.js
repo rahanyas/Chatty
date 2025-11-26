@@ -120,7 +120,6 @@ const userSlice = createSlice({
         builder
               .addCase(checkAuth.pending, state => {
                 state.msg = '';
-                state.isLogedIn = false;
                 state.status = 'Loading';
               })
               .addCase(checkAuth.fulfilled, (state, action) => {

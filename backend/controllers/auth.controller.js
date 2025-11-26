@@ -88,7 +88,7 @@ export const checkAuth = async (req, res) => {
 		const token =  req?.cookies?.token;
 		console.log('token : ',token);
 		if(!token){
-			return res.status(400).json({success : false, msg : 'User is not Authenticated'})
+			return res.status(401).json({success : false, msg : 'User is not Authenticated'})
 		};
 
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);

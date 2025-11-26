@@ -19,7 +19,6 @@ export const createToken = (userId, res) => {
     res.cookie('token', token, {
       httpOnly  : true, // it will block accessing cookie from client without this anybody can access document.cookie()
       maxAge : 2 * 24 * 60  * 60 * 1000,
-      domain : "hey-stgl.onrender.com"
     });
 
     console.log('token set in cookies : ', token);
