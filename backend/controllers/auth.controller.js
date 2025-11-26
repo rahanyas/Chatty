@@ -70,7 +70,7 @@ export const Login = async (req, res) => {
 
 		if(!user) return res.status(400).json({success : false,  msg : 'User Not Exist'})
 		
-		const checkPass =  bcrypt.compare(pass, user.pass);
+		const checkPass =  await bcrypt.compare(pass, user.pass);
 
 		if(!checkPass) return res.status(400).json({success : false, msg : 'Invalid Credentials'});
 		user.pass = undefined
