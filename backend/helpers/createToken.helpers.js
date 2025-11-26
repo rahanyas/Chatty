@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 
-const isProduction = process.env.NODE_ENV === 'production';
+// const isProduction = process.env.NODE_ENV === 'production';
+// console.log(isProduction);
 
 export const createToken = (userId, res) => {
  try{
@@ -18,7 +19,7 @@ export const createToken = (userId, res) => {
     res.cookie('token', token, {
       httpOnly  : true, // it will block accessing cookie from client without this anybody can access document.cookie()
       maxAge : 2 * 24 * 60  * 60 * 1000,
-      path : '/'
+      domain : "hey-stgl.onrender.com"
     });
 
     console.log('token set in cookies : ', token);

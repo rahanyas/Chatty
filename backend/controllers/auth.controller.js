@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import { createToken } from '../helpers/createToken.helpers.js';
 import jwt from 'jsonwebtoken';
 
-const Auth_instance = new Auth_check();
+
 
 export const register = async (req, res) => {
 	try{
@@ -20,9 +20,9 @@ export const register = async (req, res) => {
   
 
 	// setter methods in authcheck 
-	Auth_instance.checkEmail = email;
-	Auth_instance.checkPass = pass;
-	Auth_instance.checkMobile = mobile
+	Auth_check.checkEmail = email;
+	Auth_check.checkPass = pass;
+	Auth_check.checkMobile = mobile
 
 	const existingUser = await userModal.findOne({email});
 	
@@ -63,14 +63,14 @@ export const Login = async (req, res) => {
 			return res.status(400).json({success : false, msg : 'Please enter all feilds'})
 		}
 
-		Auth_instance.checkEmail = email;
-		Auth_instance.checkPass = pass
+		Auth_check.checkEmail = email;
+		Auth_check.checkPass = pass
 		
 		const user = await userModal.findOne({email}).select("+pass");
 
 		if(!user) return res.status(400).json({success : false,  msg : 'User Not Exist'})
 		
-		const checkPass = await bcrypt.compare(pass, user.pass);
+		const checkPass =  bcrypt.compare(pass, user.pass);
 
 		if(!checkPass) return res.status(400).json({success : false, msg : 'Invalid Credentials'});
 		user.pass = undefined

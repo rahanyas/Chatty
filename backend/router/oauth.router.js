@@ -19,8 +19,8 @@ router.get('/google/callback', passport.authenticate('google', {
         return res.status(400).json({success : false, msg : 'Authentication Failed'})
     };
 
-    const token = createToken(req?.user?._id, res);
-    console.log('generated token : ', req?.cookies?.token || token);
+    createToken(req?.user?._id, res);
+    console.log('generated token : ', req?.cookies?.token);
 
     const redirectUrl =  process.env.PROD_URI 
     console.log('redirect url : ', redirectUrl );
