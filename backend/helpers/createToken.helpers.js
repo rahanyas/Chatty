@@ -13,12 +13,17 @@ export const createToken = (userId, res) => {
    //create jwt token
    const token = jwt.sign({id:userId}, process.env.JWT_SECRET,
     {expiresIn : '2d'});
+    
+    if(!token){
+      console.log('token : ', token)
+      return res.status(400).json({success : false, msg : 'Token creation Failed'})
+    }
 
     console.log('token created ', token);
 
-    res.cookie('token', token, {
-      secure : process.env.DEV !== 'development' ? true : false,
-      sameSite : process.env.DEV !== 'development'? 'None' : 'Lax',
+    res.cookie("token", token, {
+      secure : process.env.DEV !== 'development',
+      sameSite : process.env.DEV !== 'development' ? 'None' : 'Lax',
       httpOnly  : true, // it will block accessing cookie from client without this anybody can access document.cookie()
       maxAge : 2 * 24 * 60  * 60 * 1000,
     });
@@ -27,6 +32,6 @@ export const createToken = (userId, res) => {
     
  }catch(err){
 	console.log('error in createToken : ', err);
-	return res.status(400).json({sucesss:false,msg:'Token Generation Failed'})
+	return res.status(500).json({sucesss:false,msg:'Token Generation Failed'})
  }
 }
