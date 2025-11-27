@@ -4,7 +4,8 @@ export const verifyToken = (req, res, next) => {
     try {
         const token =  req?.cookies?.token;
         console.log('token : ', token);
-        if(!token){
+
+        if(!token || token.length < 0){
             return res.status(401).json({success : false , msg : 'user is not Authenticated'});
         }
 

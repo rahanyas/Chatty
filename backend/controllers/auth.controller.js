@@ -85,8 +85,6 @@ export const Login = async (req, res) => {
 
 export const checkAuth = async (req, res) => {
 	try {
-		console.log(req);
-		
 		const token =  req?.cookies?.token;
 		console.log('token : ',token);
 		if(!token || token.length < 0){
@@ -121,7 +119,11 @@ export const logout = async (req, res) => {
 		if(!token) {
 			return res.status(400).json({success : false, msg : 'user is not authorized'})
 		}
-		res.clearCookie('token');
+		res.clearCookie('token',{
+        secure : process.env.DEV !== 'development',
+        sameSite : process.env.DEV !== 'development' ? 'None' : 'Lax',
+        httpOnly  : true,
+		});
 		return res.status(200).json({success : true, msg : 'Logged out successfully'})
 	} catch (err) {
 		console.log('Error in logout function', err);
