@@ -10,4 +10,7 @@
 
 # creating func for Login in controller =  done
 
-# created class for auth_checking and created setter methods in that class for details like is valid email, pass, mobile and exported the class and created instance in auth.controller 
+# created class for auth_checking and created static methods in that class for details like is valid email, pass, mobile and exported the class and created instance in auth.controller 
+
+solved cookie error . how ? = we need to set the same things to logut cleari
+ng cookie as we setted to cookie creation

@@ -44,11 +44,13 @@ const App = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  useEffect(() => {
-    dispatch(checkAuth())
-  },[dispatch]);
+  
+    useEffect(() => {
+      dispatch(checkAuth())
+    },[dispatch]);
+    
+  if(user.status === 'loading') return <LoadingPage />
 
-  if(user.status === 'Loading') return <LoadingPage />
 
   return (
     <Suspense fallback={<LoadingPage/>}>

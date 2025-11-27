@@ -8,7 +8,6 @@ const initialState = {
     mobile : '',
     pass : '',
     isLogedIn : false,
-    logedInThroughOauth: false,
     status : 'idle',
     msg : ''
 }
@@ -41,7 +40,6 @@ export const login = createAsyncThunk('user/login', async (data, {rejectWithValu
 export const checkAuth = createAsyncThunk('user/checkAuth', async (_,{rejectWithValue}) => {
     try {
         const res = await server.get('/auth/checkAuth', {withCredentials : true});
-        console.log('res from checkAuth : ', res.data);
         return res.data
     } catch (err) {
         console.log('Error in checkAuth  : ', err.response.data);
@@ -61,7 +59,6 @@ export const logout = createAsyncThunk('user/logout', async (_, {rejectWithValue
 })
 
 export const oauthLogin = () => {
-        // console.log('oauth btn clicked')
         window.location.href = 'https://hey-stgl.onrender.com/auth/google'   
 };
 
@@ -87,7 +84,6 @@ const userSlice = createSlice({
                 state.email = action.payload?.data?.email,
                 state.name = action.payload?.data?.name,
                 state.isLogedIn = action.payload?.success;
-                state.logedInThroughOauth = false;
                 state.status = 'success'
             })
             .addCase(register.rejected, (state, action) =>  {
@@ -100,13 +96,12 @@ const userSlice = createSlice({
               .addCase(login.pending, state => {
                 state.msg = '';
                 state.isLogedIn = false;
-                state.status  = 'Loading'
+                state.status  = 'loading'
               })
               .addCase(login.fulfilled, (state, action) => {
                 console.log('login fullfiled res : ',action);
                 state.msg = action.payload?.msg;
                 state.isLogedIn = action.payload?.success;
-                state.logedInThroughOauth  = false;
                 state.status  = 'success',
                 state.name = action.payload?.data?.name
                 state.email = action.payload?.data?.email;
@@ -115,12 +110,12 @@ const userSlice = createSlice({
               .addCase(login.rejected, (state, action) => {
                 state.msg = action.payload?.msg;
                 state.isLogedIn = action.payload?.success;
-                state.status = 'Failed'
+                state.status = 'failed'
               }),
         builder
               .addCase(checkAuth.pending, state => {
                 state.msg = '';
-                state.status = 'Loading';
+                state.status = 'loading';
               })
               .addCase(checkAuth.fulfilled, (state, action) => {
                 console.log('res checkauth fullfiled : ',action);
@@ -134,11 +129,11 @@ const userSlice = createSlice({
               .addCase(checkAuth.rejected, (state, action) => {
                 state.msg = '';
                 state.isLogedIn = false;
-                state.status = 'Failed';
+                state.status = 'failed';
               }),
         builder
               .addCase(logout.pending, (state) => {
-                 state.status = 'pending',
+                 state.status = 'loading',
                  state.isLogedIn = false
               })
               .addCase(logout.fulfilled, (state, action) => {
@@ -146,7 +141,6 @@ const userSlice = createSlice({
                 state.pass  = '';
                 state.mobile = '';
                 state.isLogedIn = false;
-                state.logedInThroughOauth = false;
                 state.status = 'success';
                 state.msg = action.payload?.msg;
               })

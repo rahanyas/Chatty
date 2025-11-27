@@ -7,7 +7,8 @@ export const createToken = (userId, res) => {
  try{
    console.log(userId);
    if(!userId){
-     return console.log('user id is not definded');
+     console.log('user id is not definded');
+     return res.status(400).json({msg : 'Error in token Creation', success : false})
    }
 
    //create jwt token
@@ -15,7 +16,6 @@ export const createToken = (userId, res) => {
     {expiresIn : '2d'});
     
     if(!token){
-      console.log('token : ', token)
       return res.status(400).json({success : false, msg : 'Token creation Failed'})
     }
 
@@ -27,8 +27,6 @@ export const createToken = (userId, res) => {
       httpOnly  : true, // it will block accessing cookie from client without this anybody can access document.cookie()
       maxAge : 2 * 24 * 60  * 60 * 1000,
     });
-
-    console.log('token set in cookies : ', token);
     
  }catch(err){
 	console.log('error in createToken : ', err);

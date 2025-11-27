@@ -13,8 +13,8 @@ const Signup = () => {
   const user = useSelector((state) => state.user)
 
   useEffect(() => {
-    if (user.isLogedIn === true || user.logedInThroughOauth === true) navigate('/home')
-  }, [user.isLogedIn, user.logedInThroughOauth, navigate])
+    if (user.isLogedIn === true) navigate('/home')
+  }, [user.isLogedIn, navigate])
 
   const handleChange = (e) => {
     setErrorMsg('')

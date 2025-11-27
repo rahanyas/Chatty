@@ -1,5 +1,5 @@
 import {Link, useNavigate} from 'react-router-dom'
-import { login } from '../../features/user/userSlice';
+import { login, oauthLogin } from '../../features/user/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
@@ -18,10 +18,10 @@ const LoginPage = () => {
     }))
 
     useEffect(() => {
-        if(user.isLogedIn === true || user.logedInThroughOauth === true){
+        if(user.isLogedIn === true){
             navigate('/home')
         }
-    }, [user.isLogedIn, user.logedInThroughOauth,navigate])
+    }, [user.isLogedIn,navigate])
   
     const userLogin = () => {
         const {email, pass} = data
@@ -46,7 +46,7 @@ const LoginPage = () => {
                     <button className='login-btn' onClick={userLogin}>login</button>
                 </div>
                 <div className="oauth-box">
-                    <button className='oauth-Btn'>login with google</button>
+                    <button className='oauth-Btn' onClick={() => dispatch(oauthLogin())}>login with google</button>
                     <p>dont have an account?<Link to='/signup'>sign-in</Link></p>
                 </div>
         </div>
